@@ -9,17 +9,19 @@
                 "id": "granify",
                 "children":
                     [
+                        { "command": "github", "caption": "Github", "children": [
+                            { "command": "merged_today", "caption": "Merged Today" },
+                            { "command": "merged_on", "caption": "Merged On" },
+                            { "command": "merged_between", "caption": "Merged Between" }
+                        ]},
+                        { "command": "minify", "caption": "Minify JS" },
                         { "command": "recompile", "caption": "Recompile" },
+                        { "command": "run", "caption": "Run" },
                         { "command": "startup", "caption": "Startup" },
+                        { "command": "test", "caption": "Test" },
                         { "caption": "-"},
                         { "command": "testing", "caption": "Testing" }
                     ]
-            },
-            {
-                "caption": "Package Control",
-                "mnemonic": "C",
-                "command": "show_overlay",
-                "args": {"overlay": "command_palette", "text": "Package Control: "}
             }
         ]
     }
