@@ -15,6 +15,7 @@ class Commander():
 		result = pipe.communicate()
 
 		if pipe.returncode == 0:
-			print convert.from_ansi(result[0])
+			return convert.from_ansi(result[0])
 		else:
 			sublime.status_message("Error occurred running Granify command")
+			return "Error occurred running Granify command"
