@@ -11,6 +11,12 @@
     {   "caption": "Granify: Test JS",
         "command": "granify_test_js"
     },
+    {   "caption": "Granify: Test Granify",
+        "command": "granify_test_granify"
+    },
+    {   "caption": "Granify: Test Goliath",
+        "command": "granify_test_goliath"
+    },
     {   "caption": "Granify: Merged Today",
         "command": "granify_github_merged_today"
     },
