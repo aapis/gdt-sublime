@@ -8,7 +8,7 @@ class Commander():
 	def __init__(self, command):
 		self.command = "source $HOME/.bash_profile && %s" %command
 
-	def execute(self):
+	def send_order(self):
 		convert = Convert()
 
 		pipe = subprocess.Popen(self.command, shell=True, stdout=subprocess.PIPE)

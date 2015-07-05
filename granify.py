@@ -10,7 +10,7 @@ class RecompileCommand(sublime_plugin.TextCommand):
 
 		command = "granify recompile"
 		general = Commander(command)
-		general.execute()
+		general.send_order()
 
 class StartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -18,7 +18,7 @@ class StartupCommand(sublime_plugin.TextCommand):
 
 		command = "granify startup both"
 		general = Commander(command)
-		general.execute()
+		general.send_order()
 
 class TestingCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -26,5 +26,5 @@ class TestingCommand(sublime_plugin.TextCommand):
 
 		command = "evertils get info"
 		general = Commander(command)
-		general.execute()
+		general.send_order()
 		
