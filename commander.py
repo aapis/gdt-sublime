@@ -8,14 +8,13 @@ class Commander():
 	def __init__(self, command):
 		self.command = "source $HOME/.bash_profile && %s" %command
 
-	def send_order(self):
+	def send_order(self, granify_command):
 		convert = Convert()
 
 		pipe = subprocess.Popen(self.command, shell=True, stdout=subprocess.PIPE)
 		result = pipe.communicate()
 
 		if pipe.returncode == 0:
-			return convert.from_ansi(result[0])
+			return (True, convert.from_ansi(result[0]))
 		else:
-			sublime.status_message("Error occurred running Granify command")
-			return "Error occurred running Granify command"
+			return (False, "Error occurred running %s" % granify_command)
