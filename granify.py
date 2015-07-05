@@ -4,7 +4,7 @@ import sublime_plugin
 import os.path
 from commander import Commander
 
-class RecompileCommand(sublime_plugin.TextCommand):
+class GranifyRecompileCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		sublime.status_message("Recompiling granify/goliath")
 
@@ -12,7 +12,7 @@ class RecompileCommand(sublime_plugin.TextCommand):
 		general = Commander(command)
 		general.send_order()
 
-class StartupCommand(sublime_plugin.TextCommand):
+class GranifyStartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		sublime.status_message("Starting granify/goliath")
 
@@ -20,7 +20,7 @@ class StartupCommand(sublime_plugin.TextCommand):
 		general = Commander(command)
 		general.send_order()
 
-class TestingCommand(sublime_plugin.TextCommand):
+class GranifyTestingCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		sublime.status_message("Testing!")
 

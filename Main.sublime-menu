@@ -9,18 +9,18 @@
                 "id": "granify",
                 "children":
                     [
-                        { "command": "github", "caption": "Github", "children": [
-                            { "command": "merged_today", "caption": "Merged Today" },
-                            { "command": "merged_on", "caption": "Merged On" },
-                            { "command": "merged_between", "caption": "Merged Between" }
+                        { "command": "granify_github", "caption": "Github", "children": [
+                            { "command": "granify_merged_today", "caption": "Merged Today" },
+                            { "command": "granify_merged_on", "caption": "Merged On" },
+                            { "command": "granify_merged_between", "caption": "Merged Between" }
                         ]},
-                        { "command": "minify", "caption": "Minify JS" },
-                        { "command": "recompile", "caption": "Recompile" },
-                        { "command": "run", "caption": "Run" },
-                        { "command": "startup", "caption": "Startup" },
-                        { "command": "test", "caption": "Test" },
+                        { "command": "granify_minify", "caption": "Minify JS" },
+                        { "command": "granify_recompile", "caption": "Recompile" },
+                        { "command": "granify_run", "caption": "Run" },
+                        { "command": "granify_startup", "caption": "Startup" },
+                        { "command": "granify_test", "caption": "Test" },
                         { "caption": "-"},
-                        { "command": "testing", "caption": "Testing" }
+                        { "command": "granify_testing", "caption": "Testing" }
                     ]
             }
         ]
