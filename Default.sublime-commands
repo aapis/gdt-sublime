@@ -1,8 +1,23 @@
 [
-    {   "caption": "Recompile",
-        "command": "recompile"
+    {   "caption": "Granify: Recompile",
+        "command": "granify_recompile"
     },
-    {   "caption": "Startup",
-        "command": "startup"
+    {   "caption": "Granify: Startup",
+        "command": "granify_startup"
+    },
+    {   "caption": "Granify: Run",
+        "command": "granify_run"
+    },
+    {   "caption": "Granify: Test JS",
+        "command": "granify_test_js"
+    },
+    {   "caption": "Granify: Merged Today",
+        "command": "granify_github_merged_today"
+    },
+    {   "caption": "Granify: Merged On",
+        "command": "granify_github_merged_on"
+    },
+    {   "caption": "Granify: Merged between",
+        "command": "granify_github_merged_between"
     }
 ]

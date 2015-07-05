@@ -4,10 +4,12 @@ import sublime_plugin
 class GranifyGithubMergedTodayCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		sublime.status_message("Testing!")
+		
+		print self
 
-		command = "granify github merged_today"
-		general = Commander(command)
-		general.send_order()
+		# command = "granify github merged_today"
+		# general = Commander(command)
+		# general.send_order()
 
 class GranifyGithubMergedOnCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
