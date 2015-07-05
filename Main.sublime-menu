@@ -1,0 +1,26 @@
+[
+    {
+        "id": "tools",
+        "children":
+        [
+            {
+                "caption": "Granify",
+                "mnemonic": "G",
+                "id": "granify",
+                "children":
+                    [
+                        { "command": "recompile", "caption": "Recompile" },
+                        { "command": "startup", "caption": "Startup" },
+                        { "caption": "-"},
+                        { "command": "testing", "caption": "Testing" }
+                    ]
+            },
+            {
+                "caption": "Package Control",
+                "mnemonic": "C",
+                "command": "show_overlay",
+                "args": {"overlay": "command_palette", "text": "Package Control: "}
+            }
+        ]
+    }
+]
