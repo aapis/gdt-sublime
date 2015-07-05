@@ -1,24 +1,30 @@
 import os
 import sublime
 import sublime_plugin
-import subprocess
 import os.path
-from subprocess import call
-
-PLUGIN_DIRECTORY = os.getcwd().replace(os.path.normpath(os.path.join(os.getcwd(), '..', '..')) + os.path.sep, '').replace(os.path.sep, '/')
+from commander import Commander
 
 class RecompileCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		print "Recompiling granify/goliath"
-		print os.popen("granify recompile").read()
+		sublime.status_message("Recompiling granify/goliath")
+
+		command = "granify recompile"
+		general = Commander(command)
+		general.execute()
 
 class StartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		print "Starting granify/goliath"
-		print os.popen("granify startup both").read()
+		sublime.status_message("Starting granify/goliath")
+
+		command = "granify startup both"
+		general = Commander(command)
+		general.execute()
 
 class TestingCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		print "Testing!"
-		print os.popen("EVERTILS=test evertils get info").read()
+		sublime.status_message("Testing!")
+
+		command = "evertils get info"
+		general = Commander(command)
+		general.execute()
 		
