@@ -20,6 +20,7 @@ class GranifyStartupCommand(sublime_plugin.TextCommand):
 		general = Commander(command)
 		general.send_order()
 
+# REMOVE ME
 class GranifyTestingCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		sublime.status_message("Testing!")
