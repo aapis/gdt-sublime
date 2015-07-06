@@ -2,6 +2,7 @@ import os
 import sublime
 import sublime_plugin
 import subprocess
+import json
 from outputformatter import OutputFormatter
 
 class Commander():
@@ -16,6 +17,21 @@ class Commander():
 		return_code = pipe.poll()
 		
 		if return_code == 0 and error == None:
-			return (True, convert.from_ansi(output))
+			converted = str(convert.from_ansi(output).encode('utf-8'))
+
+			if(self.is_json(converted)):
+				_list = json.loads(converted)
+				output = "".join(_list)
+			else:
+				output = converted
+
+			return (True, output.decode('utf-8'))
 		else:
 			return (False, "Error occurred running %s:\n%s" % (granify_command, error))
+
+	def is_json(self, input):
+		try:
+			json_object = json.loads(input)
+		except ValueError, e:
+			return False
+		return True
