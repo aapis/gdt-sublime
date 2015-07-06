@@ -23,7 +23,7 @@
     {   "caption": "Granify: Merged On",
         "command": "granify_github_merged_on"
     },
-    {   "caption": "Granify: Merged between",
+    {   "caption": "Granify: Merged Between",
         "command": "granify_github_merged_between"
     }
 ]
