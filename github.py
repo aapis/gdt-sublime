@@ -32,7 +32,7 @@ class GranifyGithubMergedOnCommand(sublime_plugin.TextCommand):
 				window = self.view.window()
 				log_window = window.new_file()
 				log_window.insert(edit, 0, response[1])
-				log_window.set_name("Pull Requests Merged On {DATE}")
+				log_window.set_name("Pull Requests Merged On %s" % response[1])
 				log_window.set_read_only(True)
 			else:
 				sublime.message_dialog("No PRs were merged on that day\n%s" % response[1])
@@ -52,7 +52,7 @@ class GranifyGithubMergedBetweenCommand(sublime_plugin.TextCommand):
 			window = self.view.window()
 			log_window = window.new_file()
 			log_window.insert(edit, 0, response[1])
-			log_window.set_name("Pull Requests Merged Between {DATE} and {DATE}")
+			log_window.set_name("Pull Requests Merged Between %s and %s" % (date_range[0], date_range[1]))
 			log_window.set_read_only(True)
 		else:
 			sublime.message_dialog("No PRs were merged in that range\n%s" % response[1])
