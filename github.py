@@ -42,8 +42,8 @@ class GranifyGithubMergedBetweenCommand(sublime_plugin.TextCommand):
 		window = self.view.window()
 		window.show_input_panel("Date Range:", "", self.on_done, None, None)
 	
-	def on_done(self, date_range):
-		date_range = date_range.split(' to ')
+	def on_done(self, d_range):
+		date_range = d_range.split(' to ')
 		command = "granify github merged_between --start=%s --end=%s" % (date_range[0], date_range[1])
 		general = Commander(command)
 		response = general.send_order(self.__class__.__name__)
