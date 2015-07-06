@@ -12,9 +12,10 @@ class Commander():
 		convert = OutputFormatter()
 
 		pipe = subprocess.Popen(self.command, shell=True, stdout=subprocess.PIPE)
-		result = pipe.communicate()
+		output, error = pipe.communicate()
+		return_code = pipe.poll()
 
-		if pipe.returncode == 0:
-			return (True, convert.from_ansi(result[0]))
+		if return_code == 0 and error == None:
+			return (True, convert.from_ansi(output.encode('utf-8')))
 		else:
-			return (False, "Error occurred running %s" % granify_command)
+			return (False, "Error occurred running %s:\n%s" % (granify_command, error))
