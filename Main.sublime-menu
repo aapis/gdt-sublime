@@ -15,7 +15,6 @@
                             { "command": "granify_github_merged_between", "caption": "Merged Between" }
                         ]},
                         { "command": "granify_recompile", "caption": "Recompile" },
-                        { "command": "granify_run", "caption": "Run" },
                         { "command": "granify_startup", "caption": "Startup" },
                         { "command": "granify_test", "caption": "Test", "children": [
                             { "command": "granify_test_granify", "caption": "Granify" },

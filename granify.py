@@ -27,15 +27,3 @@ class GranifyStartupCommand(sublime_plugin.TextCommand):
 			sublime.message_dialog("Granify and Goliath started")
 		else:
 			sublime.error_message("Problem starting granify/goliath")
-
-class GranifyRunCommand(sublime_plugin.TextCommand):
-	def run(self, edit):
-		command = "granify run granify"
-		general = Commander(command)
-		command_executed, message = general.send_order(self.__class__.__name__)
-
-		if(command_executed):
-			sublime.message_dialog("Granify and Goliath are running (attached to logs)")
-		else:
-			sublime.error_message("Problem running granify/goliath")
-		

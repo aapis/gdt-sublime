@@ -5,9 +5,6 @@
     {   "caption": "Granify: Startup",
         "command": "granify_startup"
     },
-    {   "caption": "Granify: Run",
-        "command": "granify_run"
-    },
     {   "caption": "Granify: Test JS",
         "command": "granify_test_js"
     },
