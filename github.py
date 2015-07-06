@@ -56,3 +56,14 @@ class GranifyGithubMergedBetweenCommand(sublime_plugin.TextCommand):
 			log_window.set_read_only(True)
 		else:
 			sublime.message_dialog("No PRs were merged in that range\n%s" % message)
+
+class GranifyGithubTestingCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		command = "boot2docker --version"
+		general = Commander(command)
+		command_executed, message = general.send_order(self.__class__.__name__)
+
+		if(command_executed):
+			sublime.message_dialog("B2D status: %s" % message)
+		else:
+			sublime.message_dialog("Arrgghhh matey: %s" % message)

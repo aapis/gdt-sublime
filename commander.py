@@ -14,8 +14,8 @@ class Commander():
 		pipe = subprocess.Popen(self.command, shell=True, stdout=subprocess.PIPE)
 		output, error = pipe.communicate()
 		return_code = pipe.poll()
-
+		
 		if return_code == 0 and error == None:
-			return (True, convert.from_ansi(output.encode('utf-8')))
+			return (True, convert.from_ansi(output))
 		else:
 			return (False, "Error occurred running %s:\n%s" % (granify_command, error))
