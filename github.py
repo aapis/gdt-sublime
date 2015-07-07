@@ -1,13 +1,16 @@
 import sublime
 import sublime_plugin
+import Queue
 from commander import Commander
 
 class GranifyGithubMergedTodayCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		window = self.view.window()
+		window = sublime.active_window()
 		command = "granify github merged_today"
-		general = Commander(command)
-		command_executed, message = general.send_order(self.__class__.__name__)
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		command_executed, message = queue.get()
 		
 		if(command_executed):
 			log_window = window.new_file()
@@ -19,18 +22,20 @@ class GranifyGithubMergedTodayCommand(sublime_plugin.TextCommand):
 
 class GranifyGithubMergedOnCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		window = self.view.window()
+		window = sublime.active_window()
 		self.edit = edit
-		window.show_input_panel("Date:", "", self.on_done, None, None)
+		window.show_input_panel("Date (YYYY-MM-DD):", "", self.on_done, None, None)
 
 	def on_done(self, date):
-		if(date != None):
+		if(date):
 			command = "granify github merged_on --start=%s" % date
-			general = Commander(command)
-			command_executed, message = general.send_order(self.__class__.__name__)
+			queue = Queue.Queue()
+			general = Commander(command, queue)
+			general.start()
+			command_executed, message = queue.get()
 			
 			if(command_executed):
-				window = self.view.window()
+				window = sublime.active_window()
 				log_window = window.new_file()
 				log_window.insert(self.edit, 0, message)
 				log_window.set_name("Pull Requests Merged On %s" % message)
@@ -40,18 +45,20 @@ class GranifyGithubMergedOnCommand(sublime_plugin.TextCommand):
 
 class GranifyGithubMergedBetweenCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		window = self.view.window()
+		window = sublime.active_window()
 		self.edit = edit
 		window.show_input_panel("Date Range:", "", self.on_done, None, None)
 	
 	def on_done(self, d_range):
 		date_range = d_range.split(' to ')
 		command = "granify github merged_between --start=%s --end=%s" % (date_range[0], date_range[1])
-		general = Commander(command)
-		command_executed, message = general.send_order(self.__class__.__name__)
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		command_executed, message = queue.get()
 		
 		if(command_executed):
-			window = self.view.window()
+			window = sublime.active_window()
 			log_window = window.new_file()
 			log_window.insert(self.edit, 0, message)
 			log_window.set_name("Pull Requests Merged Between %s and %s" % (date_range[0], date_range[1]))
