@@ -3,9 +3,11 @@ import sublime
 import sublime_plugin
 import os.path
 import Queue
+import shutil
 from commander import Commander
 
-WAIT_FOR_THREAD = False
+USER_SETTINGS = '../User/Granify.sublime-settings'
+PACKAGE_SETTINGS = 'Granify.sublime-settings'
 
 class GranifyRecompileCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -15,8 +17,9 @@ class GranifyRecompileCommand(sublime_plugin.TextCommand):
 		queue = Queue.Queue()
 		general = Commander(command, queue)
 		general.start()
+		settings = sublime.load_settings('Granify.sublime-settings')
 
-		if WAIT_FOR_THREAD:
+		if settings.get('always_wait_for_threads'):
 			# The following code gets the response from the executed command, it's more
 			# accurate but also requires you to wait for the thread to finish
 			command_executed, message = queue.get()
@@ -34,8 +37,9 @@ class GranifyStartupCommand(sublime_plugin.TextCommand):
 		command = "granify startup both"
 		queue = Queue.Queue()
 		general = Commander(command, queue)
+		settings = sublime.load_settings('Granify.sublime-settings')
 
-		if WAIT_FOR_THREAD:
+		if settings.get('always_wait_for_threads'):
 			# The following code gets the response from the executed command, it's more
 			# accurate but also requires you to wait for the thread to finish
 			command_executed, message = queue.get()
@@ -46,3 +50,12 @@ class GranifyStartupCommand(sublime_plugin.TextCommand):
 				sublime.error_message("Problem starting granify/goliath")
 		else:
 			sublime.message_dialog("Startup in progress")
+
+class GranifyOpenSettingsCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		window = self.view.window()
+		
+		if(not os.path.isfile(USER_SETTINGS)):
+			shutil.copyfile(PACKAGE_SETTINGS, USER_SETTINGS)
+
+		window.open_file(USER_SETTINGS)

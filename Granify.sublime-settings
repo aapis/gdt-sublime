@@ -4,5 +4,7 @@
 	"granify_always_wait_for_threads": false,
 
 	// Recompile all the things when the file is saved
+	// Will only execute on the following filetypes:
+	// ['.coffee', '.sass', '.scss']
 	"granify_recompile_on_save": true
 }

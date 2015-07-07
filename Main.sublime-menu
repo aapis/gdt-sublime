@@ -20,7 +20,9 @@
                             { "command": "granify_test_granify", "caption": "Granify" },
                             { "command": "granify_test_goliath", "caption": "Goliath" },
                             { "command": "granify_test_js", "caption": "JS" }
-                        ] }
+                        ] },
+                        { "caption": "-" },
+                        { "command": "granify_open_settings", "caption": "Settings" }
                     ]
             }
         ]
