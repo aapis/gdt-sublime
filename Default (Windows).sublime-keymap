@@ -1,4 +1,4 @@
 [
-  { "keys": ["ctrl+r"], "command": "granify_recompile" },
-  { "keys": ["ctrl+g", "ctrl+w"], "command": "granify_working_on" }
+  { "keys": ["ctrl+1"], "command": "granify_recompile" },
+  { "keys": ["ctrl+2"], "command": "granify_working_on" }
 ]
