@@ -1,6 +1,7 @@
 import sublime
 import sublime_plugin
 import Queue
+import datetime
 from commander import Commander
 
 class GranifyGithubMergedTodayCommand(sublime_plugin.TextCommand):
@@ -17,6 +18,7 @@ class GranifyGithubMergedTodayCommand(sublime_plugin.TextCommand):
 			log_window.insert(edit, 0, message)
 			log_window.set_name("Pull Requests Merged Today")
 			log_window.set_scratch(True)
+			log_window.set_status("granify_generated_on", "Generated on "+ str(datetime.datetime.now().strftime("%y-%m-%d @ %H:%M")))
 		else:
 			sublime.message_dialog("No PRs were merged today!\n%s" % message)
 
@@ -40,6 +42,7 @@ class GranifyGithubMergedOnCommand(sublime_plugin.TextCommand):
 				log_window.insert(self.edit, 0, message)
 				log_window.set_name("Pull Requests Merged On %s" % message)
 				log_window.set_scratch(True)
+				log_window.set_status("granify_generated_on", "Generated on "+ str(datetime.datetime.now().strftime("%y-%m-%d @ %H:%M")))
 			else:
 				sublime.message_dialog("No PRs were merged on that day\n%s" % message)
 
@@ -63,5 +66,6 @@ class GranifyGithubMergedBetweenCommand(sublime_plugin.TextCommand):
 			log_window.insert(self.edit, 0, message)
 			log_window.set_name("Pull Requests Merged Between %s and %s" % (date_range[0], date_range[1]))
 			log_window.set_scratch(True)
+			log_window.set_status("granify_generated_on", "Generated on "+ str(datetime.datetime.now().strftime("%y-%m-%d @ %H:%M")))
 		else:
 			sublime.message_dialog("No PRs were merged in that range\n%s" % message)
