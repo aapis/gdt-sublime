@@ -6,8 +6,9 @@ import Queue
 import shutil
 from commander import Commander
 
-USER_SETTINGS = '../User/Granify.sublime-settings'
-PACKAGE_SETTINGS = 'Granify.sublime-settings'
+PACKAGE_DIR = sublime.packages_path()
+USER_SETTINGS = PACKAGE_DIR + '/User/Granify.sublime-settings'
+PACKAGE_SETTINGS = PACKAGE_DIR + '/Granify/Granify.sublime-settings'
 
 class GranifyRecompileCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -30,7 +31,6 @@ class GranifyRecompileCommand(sublime_plugin.TextCommand):
 				sublime.error_message("Problem recompiling granify/goliath")
 		else:
 			sublime.message_dialog("Recompiling in progress")
-		
 
 class GranifyStartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -61,14 +61,14 @@ class GranifyOpenSettingsCommand(sublime_plugin.TextCommand):
 		window.open_file(USER_SETTINGS)
 
 class GranifyWorkingOnCommand(sublime_plugin.TextCommand):
-  def run(self, edit):
-    window = sublime.active_window()
-    window.show_input_panel("WorkingOn Status", "", self.on_done, None, None)
+	def run(self, edit):
+		window = sublime.active_window()
+		window.show_input_panel("WorkingOn Status", "", self.on_done, None, None)
 
-  def on_done(self, message):
-    sublime.status_message("Sending new WorkingOn status")
+	def on_done(self, message):
+		sublime.status_message("Sending new WorkingOn status")
 
-    command = "granify send workingon \"%s\"" % message.encode('utf-8')
-    queue = Queue.Queue()
-    general = Commander(command, queue)
-    general.start()
+		command = "granify send workingon \"%s\"" % message.encode('utf-8')
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
