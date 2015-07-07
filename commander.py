@@ -3,20 +3,24 @@ import sublime
 import sublime_plugin
 import subprocess
 import json
+import threading
+import Queue
 from outputformatter import OutputFormatter
 
-class Commander():
-	def __init__(self, command):
-		self.command = "source $HOME/.bash_profile && %s" %command
+class Commander(threading.Thread):
+	def __init__(self, command, queue):
+		self.command = "source $HOME/.bash_profile && %s" % command
+		self.result = None
+		self.queue = queue
+		threading.Thread.__init__(self)
 
-	def send_order(self, granify_command):
-		convert = OutputFormatter()
-
+	def run(self):
 		pipe = subprocess.Popen(self.command, shell=True, stdout=subprocess.PIPE)
 		output, error = pipe.communicate()
 		return_code = pipe.poll()
 		
 		if return_code == 0 and error == None:
+			convert = OutputFormatter()
 			converted = str(convert.from_ansi(output).encode('utf-8'))
 
 			if(self.is_json(converted)):
@@ -25,9 +29,11 @@ class Commander():
 			else:
 				output = converted
 
-			return (True, output.decode('utf-8'))
+			self.result = (True, output.decode('utf-8'))
 		else:
-			return (False, "Error occurred running %s:\n%s" % (granify_command, error))
+			self.result = (False, "Error occurred running\n%s" % error)
+
+		self.queue.put(self.result)
 
 	def is_json(self, input):
 		try:
