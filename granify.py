@@ -59,3 +59,16 @@ class GranifyOpenSettingsCommand(sublime_plugin.TextCommand):
 			shutil.copyfile(PACKAGE_SETTINGS, USER_SETTINGS)
 
 		window.open_file(USER_SETTINGS)
+
+class GranifyWorkingOnCommand(sublime_plugin.TextCommand):
+  def run(self, edit):
+    window = sublime.active_window()
+    window.show_input_panel("WorkingOn Status", "", self.on_done, None, None)
+
+  def on_done(self, message):
+    sublime.status_message("Sending new WorkingOn status")
+
+    command = "granify send workingon \"%s\"" % message
+    queue = Queue.Queue()
+    general = Commander(command, queue)
+    general.start()

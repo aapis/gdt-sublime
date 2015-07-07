@@ -1,3 +1,4 @@
 [
-  { "keys": ["super+r"], "command": "granify_recompile" }
+  { "keys": ["super+r"], "command": "granify_recompile" },
+  { "keys": ["super+g", "super+w"], "command": "granify_working_on" }
 ]
