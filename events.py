@@ -11,7 +11,6 @@ class GranifyEventListeners(sublime_plugin.EventListener):
 		recompile_on.append('.coffee')
 		recompile_on.append('.sass')
 		recompile_on.append('.scss')
-		recompile_on.append('.rb')
 
 		if settings.get('granify_recompile_on_save'):
 			if(extension in recompile_on):
