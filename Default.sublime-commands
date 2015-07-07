@@ -22,5 +22,8 @@
     },
     {   "caption": "Granify: Merged Between",
         "command": "granify_github_merged_between"
+    },
+    {   "caption": "Granify: Update WorkingOn",
+        "command": "granify_working_on"
     }
 ]
