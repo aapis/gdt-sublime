@@ -24,8 +24,9 @@ class GranifyRecompileCommand(sublime_plugin.TextCommand):
 class GranifyStartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		command = "granify startup both"
-		general = Commander(command)
-		command_executed, message = general.send_order(self.__class__.__name__)
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		command_executed, message = queue.get()
 
 		if(command_executed):
 			sublime.message_dialog("Granify and Goliath started")
