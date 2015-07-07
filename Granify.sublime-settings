@@ -1,0 +1,8 @@
+{
+	// Better messaging, but locks up the editor until the command thread finishes
+	// executing and returns a value
+	"granify_always_wait_for_threads": false,
+
+	// Recompile all the things when the file is saved
+	"granify_recompile_on_save": true
+}
