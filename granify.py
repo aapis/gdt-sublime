@@ -68,7 +68,7 @@ class GranifyWorkingOnCommand(sublime_plugin.TextCommand):
   def on_done(self, message):
     sublime.status_message("Sending new WorkingOn status")
 
-    command = "granify send workingon \"%s\"" % message
+    command = "granify send workingon \"%s\"" % message.encode('utf-8')
     queue = Queue.Queue()
     general = Commander(command, queue)
     general.start()
