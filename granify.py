@@ -2,6 +2,7 @@ import os
 import sublime
 import sublime_plugin
 import os.path
+import Queue
 from commander import Commander
 
 class GranifyRecompileCommand(sublime_plugin.TextCommand):
