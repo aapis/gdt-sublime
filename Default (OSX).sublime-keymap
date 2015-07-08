@@ -1,6 +1,8 @@
 [
   { "keys": ["super+1"], "command": "granify_recompile" },
   { "keys": ["super+2"], "command": "granify_working_on" },
+  { "keys": ["super+3"], "command": "granify_startup" },
+  { "keys": ["super+4"], "command": "granify_test_js" },
   { "keys": ["super+shift+a"], "command": "prompt_add_folder" },
   { "keys": ["super+shift+o"], "command": "prompt_add_folder" }
 ]
