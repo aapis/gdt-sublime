@@ -10,11 +10,11 @@ PACKAGE_DIR = sublime.packages_path()
 USER_SETTINGS = PACKAGE_DIR + '/User/Granify.sublime-settings'
 PACKAGE_SETTINGS = PACKAGE_DIR + '/Granify/Granify.sublime-settings'
 
-class GranifyRecompileCommand(sublime_plugin.TextCommand):
+class GranifyResyncCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
-		sublime.status_message("Recompiling granify/goliath")
+		sublime.status_message("Syncing granify/goliath")
 
-		command = "granify recompile"
+		command = "granify recompile resync"
 		queue = Queue.Queue()
 		general = Commander(command, queue)
 		general.start()
@@ -26,11 +26,11 @@ class GranifyRecompileCommand(sublime_plugin.TextCommand):
 			command_executed, message = queue.get()
 
 			if(command_executed):
-				sublime.message_dialog("Granify and Goliath were recompiled")
+				sublime.message_dialog("Granify and Goliath are in sync")
 			else:
-				sublime.error_message("Problem recompiling granify/goliath")
+				sublime.error_message("Problem syncing granify/goliath")
 		else:
-			sublime.message_dialog("Recompiling in progress")
+			sublime.message_dialog("Syncing in progress")
 
 class GranifyStartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
