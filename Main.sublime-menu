@@ -14,7 +14,10 @@
                             { "command": "granify_github_merged_on", "caption": "Merged On" },
                             { "command": "granify_github_merged_between", "caption": "Merged Between" }
                         ]},
-                        { "command": "granify_resync", "caption": "Resync" },
+                        { "caption": "Syncing", "children": [
+                            { "command": "granify_recompile", "caption": "Recompile" },
+                            { "command": "granify_resync", "caption": "Resync" }
+                        ]},
                         { "command": "granify_startup", "caption": "Startup" },
                         { "command": "granify_test", "caption": "Test", "children": [
                             { "command": "granify_test_granify", "caption": "Granify" },
