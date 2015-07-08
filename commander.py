@@ -9,7 +9,7 @@ from outputformatter import OutputFormatter
 
 class Commander(threading.Thread):
 	def __init__(self, command, queue):
-		self.command = "source $HOME/.bash_profile && %s" % command
+		self.command = "source %s/.bash_profile && %s" % (os.path.expanduser('~'), command)
 		self.result = None
 		self.queue = queue
 		threading.Thread.__init__(self)
