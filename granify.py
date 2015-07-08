@@ -32,6 +32,28 @@ class GranifyResyncCommand(sublime_plugin.TextCommand):
 		else:
 			sublime.message_dialog("Syncing in progress")
 
+class GranifyRecompileCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		sublime.status_message("Compiling granify and goliath")
+
+		command = "granify recompile"
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		settings = sublime.load_settings('Granify.sublime-settings')
+
+		if settings.get('always_wait_for_threads'):
+			# The following code gets the response from the executed command, it's more
+			# accurate but also requires you to wait for the thread to finish
+			command_executed, message = queue.get()
+
+			if(command_executed):
+				sublime.message_dialog("Granify and Goliath were compiled")
+			else:
+				sublime.error_message("Problem compiling granify/goliath")
+		else:
+			sublime.message_dialog("Compilation in progress")
+
 class GranifyStartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		command = "granify startup both"

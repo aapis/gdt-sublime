@@ -2,6 +2,9 @@
     {   "caption": "Granify: Resync",
         "command": "granify_resync"
     },
+    {   "caption": "Granify: Recompile",
+        "command": "granify_recompile"
+    },
     {   "caption": "Granify: Startup",
         "command": "granify_startup"
     },
