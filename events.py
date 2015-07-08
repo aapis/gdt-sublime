@@ -7,11 +7,11 @@ class GranifyEventListeners(sublime_plugin.EventListener):
 		settings = sublime.load_settings('Granify.sublime-settings')
 		filename, extension = os.path.splitext(view.file_name())
 
-		recompile_on = []
-		recompile_on.append('.coffee')
-		recompile_on.append('.sass')
-		recompile_on.append('.scss')
+		resync_on = []
+		resync_on.append('.coffee')
+		resync_on.append('.sass')
+		resync_on.append('.scss')
 
-		if settings.get('granify_recompile_on_save'):
-			if(extension in recompile_on):
-				view.run_command('granify_recompile')
+		if settings.get('granify_resync_on_save'):
+			if(extension in resync_on):
+				view.run_command('granify_resync')
