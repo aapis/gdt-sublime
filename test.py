@@ -5,8 +5,10 @@ from commander import Commander
 class GranifyTestGranify(sublime_plugin.TextCommand):
 	def run(self, edit):
 		command = "granify test granify"
-		general = Commander(command)
-		command_executed, message = general.send_order(self.__class__.__name__)
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		command_executed, message = queue.get()
 		
 		if(command_executed):
 			window = self.view.window()
@@ -20,8 +22,10 @@ class GranifyTestGranify(sublime_plugin.TextCommand):
 class GranifyTestGoliath(sublime_plugin.TextCommand):
 	def run(self, edit):
 		command = "granify test goliath"
-		general = Commander(command)
-		command_executed, message = general.send_order(self.__class__.__name__)
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		command_executed, message = queue.get()
 		
 		if(command_executed):
 			window = self.view.window()
@@ -35,8 +39,10 @@ class GranifyTestGoliath(sublime_plugin.TextCommand):
 class GranifyTestJs(sublime_plugin.TextCommand):
 	def run(self, edit):
 		command = "granify test js"
-		general = Commander(command)
-		command_executed, message = general.send_order(self.__class__.__name__)
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		command_executed, message = queue.get()
 		
 		if(command_executed):
 			window = self.view.window()
