@@ -15,6 +15,7 @@ class Commander(threading.Thread):
 		threading.Thread.__init__(self)
 
 	def run(self):
+		# TODO: setup custom bash environment here so the source stuff above is not required
 		pipe = subprocess.Popen(self.command, shell=True, stdout=subprocess.PIPE)
 		output, error = pipe.communicate()
 		return_code = pipe.poll()
