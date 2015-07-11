@@ -20,7 +20,7 @@ class GranifyResyncCommand(sublime_plugin.TextCommand):
 		general.start()
 		settings = sublime.load_settings('Granify.sublime-settings')
 
-		if settings.get('always_wait_for_threads'):
+		if settings.get('granify_always_wait_for_threads'):
 			# The following code gets the response from the executed command, it's more
 			# accurate but also requires you to wait for the thread to finish
 			command_executed, message = queue.get()
@@ -42,7 +42,7 @@ class GranifyRecompileCommand(sublime_plugin.TextCommand):
 		general.start()
 		settings = sublime.load_settings('Granify.sublime-settings')
 
-		if settings.get('always_wait_for_threads'):
+		if settings.get('granify_always_wait_for_threads'):
 			# The following code gets the response from the executed command, it's more
 			# accurate but also requires you to wait for the thread to finish
 			command_executed, message = queue.get()
@@ -61,7 +61,7 @@ class GranifyStartupCommand(sublime_plugin.TextCommand):
 		general = Commander(command, queue)
 		settings = sublime.load_settings('Granify.sublime-settings')
 
-		if settings.get('always_wait_for_threads'):
+		if settings.get('granify_always_wait_for_threads'):
 			# The following code gets the response from the executed command, it's more
 			# accurate but also requires you to wait for the thread to finish
 			command_executed, message = queue.get()
