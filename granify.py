@@ -48,7 +48,7 @@ class GranifyRecompileCommand(sublime_plugin.TextCommand):
 			command_executed, message = queue.get()
 
 			if(command_executed):
-				sublime.message_dialog("Granify and Goliath were compiled")
+				sublime.message_dialog('Granify and Goliath compiled successfully')
 			else:
 				sublime.error_message("Problem compiling granify/goliath")
 		else:

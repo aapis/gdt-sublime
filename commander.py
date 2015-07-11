@@ -22,7 +22,7 @@ class Commander(threading.Thread):
 		
 		if return_code == 0 and error == None:
 			convert = OutputFormatter()
-			converted = str(convert.from_ansi(output).encode('utf-8'))
+			converted = convert.from_ansi(output).encode('utf-8')
 
 			if(self.is_json(converted)):
 				_list = json.loads(converted)
