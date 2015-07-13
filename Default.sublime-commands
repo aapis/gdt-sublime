@@ -5,6 +5,12 @@
     {   "caption": "Granify: Recompile",
         "command": "granify_recompile"
     },
+    {   "caption": "Granify: Migrate",
+        "command": "granify_migrate_development"
+    },
+    {   "caption": "Granify: Migrate (test data)",
+        "command": "granify_migrate_test"
+    },
     {   "caption": "Granify: Startup",
         "command": "granify_startup"
     },

@@ -54,6 +54,50 @@ class GranifyRecompileCommand(sublime_plugin.TextCommand):
 		else:
 			sublime.message_dialog("Compilation in progress")
 
+class GranifyMigrateDevelopmentCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		sublime.status_message("Compiling granify and goliath")
+
+		command = "granify migrate development"
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		settings = sublime.load_settings('Granify.sublime-settings')
+
+		if settings.get('granify_always_wait_for_threads'):
+			# The following code gets the response from the executed command, it's more
+			# accurate but also requires you to wait for the thread to finish
+			command_executed, message = queue.get()
+
+			if(command_executed):
+				sublime.message_dialog('Development environment migration completed successfully')
+			else:
+				sublime.error_message("An error occurred while migrating to development")
+		else:
+			sublime.message_dialog("Migration in progress")
+
+class GranifyMigrateTestCommand(sublime_plugin.TextCommand):
+	def run(self, edit):
+		sublime.status_message("Compiling granify and goliath")
+
+		command = "granify migrate test"
+		queue = Queue.Queue()
+		general = Commander(command, queue)
+		general.start()
+		settings = sublime.load_settings('Granify.sublime-settings')
+
+		if settings.get('granify_always_wait_for_threads'):
+			# The following code gets the response from the executed command, it's more
+			# accurate but also requires you to wait for the thread to finish
+			command_executed, message = queue.get()
+
+			if(command_executed):
+				sublime.message_dialog('Test environment migration completed successfully')
+			else:
+				sublime.error_message("An error occurred while migrating to test")
+		else:
+			sublime.message_dialog("Migration in progress")
+
 class GranifyStartupCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		command = "granify startup both"

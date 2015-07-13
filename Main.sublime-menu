@@ -15,6 +15,8 @@
                             { "command": "granify_github_merged_between", "caption": "Merged Between" }
                         ]},
                         { "caption": "Syncing", "children": [
+                            { "command": "granify_migrate_development", "caption": "Migrate" },
+                            { "command": "granify_migrate_test", "caption": "Migrate (test data)" },
                             { "command": "granify_recompile", "caption": "Recompile" },
                             { "command": "granify_resync", "caption": "Resync" }
                         ]},
